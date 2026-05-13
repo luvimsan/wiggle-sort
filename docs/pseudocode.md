@@ -240,7 +240,7 @@ Algorithm wiggle_sort_recursive(nums, n)
         temp[i] ← nums[i]
     }
 
-    sort(temp)
+    sort_recursive(temp)
 
     left ← (n - 1) / 2
     right ← n - 1
