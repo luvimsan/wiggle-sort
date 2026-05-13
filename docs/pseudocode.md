@@ -41,6 +41,7 @@ Algorithm wiggle_sort_nonrecursive(nums, n)
 ```
 
 ---
+
 ## Wiggle Sort Recursive
 
 ```c
@@ -81,3 +82,93 @@ Algorithm wiggle_sort_recursive(nums, n)
 }
 ```
 
+---
+
+## Merge Sort Non-Recursive
+
+```c
+Algorithm sort_nonrecursive(nums, n)
+{
+    // curr_size tracks the size of subarrays to be merged
+    curr_size ← 1
+  
+    while curr_size < n do
+    {
+        // left_start tracks the starting index of the left subarray
+        left_start ← 0
+  
+        while left_start < n - 1 do
+        {
+            // calculate mid and right_end, ensuring we don't go out of bounds
+            mid ← left_start + curr_size - 1
+            if mid > n - 1 then
+            {
+                mid ← n - 1
+            }
+
+            right_end ← left_start + 2 * curr_size - 1
+            if right_end > n - 1 then
+            {
+                right_end ← n - 1
+            }
+  
+            // now we start the merging process
+            left_len ← mid - left_start + 1
+            right_len ← right_end - mid
+  
+            // copy data to temporary arrays
+            for i ← 0 to left_len - 1 do
+            {
+                temp_left[i] ← nums[left_start + i]
+            }
+  
+            for j ← 0 to right_len - 1 do
+            {
+                temp_right[j] ← nums[mid + 1 + j]
+            }
+  
+            i ← 0
+            j ← 0
+            k ← left_start
+  
+            // merge the temporary arrays back into nums
+            while (i < left_len) and (j < right_len) do
+            {
+                if temp_left[i] <= temp_right[j] then
+                {
+                    nums[k] ← temp_left[i]
+                    i ← i + 1
+                }
+                else
+                {
+                    nums[k] ← temp_right[j]
+                    j ← j + 1
+                }
+                k ← k + 1
+            }
+  
+            // copy any remaining elements of temp_left
+            while i < left_len do
+            {
+                nums[k] ← temp_left[i]
+                i ← i + 1
+                k ← k + 1
+            }
+  
+            // copy any remaining elements of temp_right
+            while j < right_len do
+            {
+                nums[k] ← temp_right[j]
+                j ← j + 1
+                k ← k + 1
+            }
+  
+            // move to the next pair of subarrays
+            left_start ← left_start + 2 * curr_size
+        }
+  
+        // double the subarray size for the next pass
+        curr_size ← 2 * curr_size
+    }
+}
+```
