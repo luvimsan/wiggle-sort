@@ -3,7 +3,8 @@
 
 void wiggle_sort_recursive(int nums[], int n);
 void wiggle_sort_nonrecursive(int nums[], int n);
-void sort(int nums[], int left, int right);
+void sort_recursive(int nums[], int n);
+void sort_nonrecursive(int nums[], int n);
 void swap(int *a, int *b);
 
 
