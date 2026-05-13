@@ -66,15 +66,18 @@ Algorithm recursive_interleave(nums, temp, left, right, i, n)
 
 Algorithm wiggle_sort_recursive(nums, n)
 {
-    temp ← copy of nums
+    // we create a temporary array and copy all of the original array elements in it to preserve the original array
+    for i ← 0 to n - 1 do
+    {
+        temp[i] ← nums[i]
+    }
+
     sort(temp)
 
     left ← (n - 1) / 2
     right ← n - 1
 
     recursive_interleave(nums, temp, left, right, 0, n)
-
-    return nums
 }
 ```
 
