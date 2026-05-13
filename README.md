@@ -4,7 +4,7 @@ A simple implementation of wiggle sort written in c with both approaches
 - Non-recursive
 
 
-## Dependencies
+## Prerequisites
 - gcc
 - make
 

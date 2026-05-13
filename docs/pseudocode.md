@@ -1,11 +1,13 @@
-# Wiggle Sort Non-Recursive
+## Pseudocode Wiggle Sort
 
-```
+## Wiggle Sort Non-Recursive
+
+```c
 Algorithm wiggle_sort_nonrecursive(nums, n)
 // nums is an array of size n
 {
     // first we need to sort the array
-    MergeSort(nums, 0, n - 1)
+    sort(nums, 0, n - 1)
 
     // we create a temporary array and copy all of the original array elements in it to preserve the original array
     for i ← 0 to n - 1 do
@@ -38,39 +40,41 @@ Algorithm wiggle_sort_nonrecursive(nums, n)
 }
 ```
 
-# Wiggle Sort Recursive
-```
-algorithm RecursiveInterleave(Arr, temp, left, right, i, n)
+---
+## Wiggle Sort Recursive
+
+```c
+Algorithm recursive_interleave(nums, temp, left, right, i, n)
 {
     if i = n then
     {
         return
     }
-    
+
 
     if (i mod 2) = 0 then
     {
-        Arr[i] ← temp[left]
-        RecursiveInterleave(Arr, temp, left - 1, right, i + 1, n)
+        nums[i] ← temp[left]
+        recursive_interleave(nums, temp, left - 1, right, i + 1, n)
     }
     else
     {
-        Arr[i] ← temp[right]
-        RecursiveInterleave(Arr, temp, left, right - 1, i + 1, n)
+        nums[i] ← temp[right]
+        recursive_interleave(nums, temp, left, right - 1, i + 1, n)
     }
 }
 
-algorithm WiggleSortRecursive(Arr, n)
+Algorithm wiggle_sort_recursive(nums, n)
 {
-    temp ← copy of Arr
-    Sort(temp)
-    
+    temp ← copy of nums
+    sort(temp)
+
     left ← (n - 1) / 2
     right ← n - 1
 
-    RecursiveInterleave(Arr, temp, left, right, 0, n)
-    
-    return Arr
+    recursive_interleave(nums, temp, left, right, 0, n)
+
+    return nums
 }
 ```
 
