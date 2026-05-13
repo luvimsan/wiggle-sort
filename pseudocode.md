@@ -1,0 +1,39 @@
+# Wiggle Sort Non-Recursive
+
+```
+Algorithm wiggle_sort_nonrecursive(nums, n)
+// nums is an array of size n
+{
+    // first we need to sort the array
+    MergeSort(nums, 0, n - 1)
+
+    // we create a temporary array and copy all of the original array elements in it to preserve the original array
+    for i ← 0 to n - 1 do
+    {
+        temp[i] ← nums[i]
+    }
+
+    // we create two variables for the two halves of the array
+    // mid points to the end of the smaller half
+    // right points to the end of the larger half
+    mid ← ((n + 1) / 2) - 1
+    right ← n - 1
+
+    // rebuild the original array using the two halves
+    for i ← 0 to n - 1 do
+    {
+        // even indices get the largest available from the smaller half
+        if (i % 2) = 0 then
+        {
+            nums[i] ← temp[mid]
+            mid ← mid - 1
+        }
+        // odd indices get the largest available from the larger half
+        else
+        {
+            nums[i] ← temp[right]
+            right ← right - 1
+        }
+    }
+}
+```
