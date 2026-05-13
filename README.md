@@ -22,3 +22,7 @@ make
 make
 ./wiggle_sort.exe
 ```
+
+## Screenshots
+
+![Running the wiggle sort](./assets/testing.png)
