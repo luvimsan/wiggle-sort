@@ -138,7 +138,75 @@ Algorithm wiggle_sort_nonrecursive(nums, n)
 > Sorting using merge sort recursivly
 
 ```c
-// TODO: recursive merge sort
+Algorithm merge_sorted_arrays(nums, l, m, r)
+{
+    left_len ← m - l + 1
+    right_len ← r - m
+
+    // copy data to temporary arrays
+    for i ← 0 to left_len - 1 do
+    {
+        temp_left[i] ← nums[l + i]
+    }
+
+    for i ← 0 to right_len - 1 do
+    {
+        temp_right[i] ← nums[m + 1 + i]
+    }
+
+    i ← 0
+    j ← 0
+    k ← l
+
+    // merge the temporary arrays back into nums
+    while (i < left_len) and (j < right_len) do
+    {
+        if temp_left[i] <= temp_right[j] then
+        {
+            nums[k] ← temp_left[i]
+            i ← i + 1
+        }
+        else
+        {
+            nums[k] ← temp_right[j]
+            j ← j + 1
+        }
+        k ← k + 1
+    }
+
+    // copy any remaining elements of temp_left
+    while i < left_len do
+    {
+        nums[k] ← temp_left[i]
+        i ← i + 1
+        k ← k + 1
+    }
+
+    // copy any remaining elements of temp_right
+    while j < right_len do
+    {
+        nums[k] ← temp_right[j]
+        j ← j + 1
+        k ← k + 1
+    }
+}
+
+Algorithm merge_sort_recursion(nums, l, r)
+{
+    if l < r then
+    {
+        m ← l + (r - l) / 2
+        merge_sort_recursion(nums, l, m)
+        merge_sort_recursion(nums, m + 1, r)
+
+        merge_sorted_arrays(nums, l, m, r)
+    }
+}
+
+Algorithm sort_recursive(nums, n)
+{
+    merge_sort_recursion(nums, 0, n - 1)
+}
 ```
 
 > Wiggle Sort Non-Recursive Pseudocode
