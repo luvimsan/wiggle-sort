@@ -37,3 +37,40 @@ Algorithm wiggle_sort_nonrecursive(nums, n)
     }
 }
 ```
+
+# Wiggle Sort Recursive
+```
+algorithm RecursiveInterleave(Arr, temp, left, right, i, n)
+{
+    if i = n then
+    {
+        return
+    }
+    
+
+    if (i mod 2) = 0 then
+    {
+        Arr[i] ← temp[left]
+        RecursiveInterleave(Arr, temp, left - 1, right, i + 1, n)
+    }
+    else
+    {
+        Arr[i] ← temp[right]
+        RecursiveInterleave(Arr, temp, left, right - 1, i + 1, n)
+    }
+}
+
+algorithm WiggleSortRecursive(Arr, n)
+{
+    temp ← copy of Arr
+    Sort(temp)
+    
+    left ← (n - 1) / 2
+    right ← n - 1
+
+    RecursiveInterleave(Arr, temp, left, right, 0, n)
+    
+    return Arr
+}
+```
+
